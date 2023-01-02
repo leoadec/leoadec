@@ -1,0 +1,13 @@
+on:
+  push:
+    branches:
+      - test-workflow
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the readme
+        run: |
+          curl https://leoadec.github.io > text.txt
+          cat text.txt
