@@ -15,7 +15,7 @@ jobs:
           repository: leoadec/leoadec.github.io
           path: website
       - name: Fetch the readme
-        run: cp website/index.html README.md
+        run: cp website/_includes/summary.html README.md
       - name: Commit changes
         run: |
           git config --global user.email "leoadec@gmail.com"
