@@ -1,0 +1,25 @@
+name: Update README
+
+on:
+  repository_dispatch:
+    types: [update-readme]
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout README repo
+        uses: actions/checkout@v3
+      - name: Checkout website
+        uses: actions/checkout@v3
+        with:
+          repository: leoadec/leoadec.github.io
+          path: website
+      - name: Fetch the README
+        run: cp website/_includes/summary.html README.md
+      - name: Commit changes
+        run: |
+          git config --global user.email "leoadec@gmail.com"
+          git config --global user.name "leoadec"
+          git commit -am 'update README'
+          git push
