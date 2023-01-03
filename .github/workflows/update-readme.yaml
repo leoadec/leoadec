@@ -7,9 +7,15 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout README repo
+        uses: actions/checkout@v3
+      - name: Checkout website
+        uses: actions/checkout@v3
+        with:
+          repository: leoadec/leoadec.github.io
+          path: website
       - name: Fetch the readme
-        run: curl https://leoadec.github.io > README.md
+        run: cp website/index.html README.md
       - name: Commit changes
         run: |
           git config --global user.email "leoadec@gmail.com"
